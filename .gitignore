@@ -1,0 +1,5 @@
+.gitgnore
+.env
+.idea
+.ipynb_checkpoints
+.DS_STORE
