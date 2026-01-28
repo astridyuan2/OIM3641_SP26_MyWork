@@ -4,15 +4,7 @@ pip install llama-index-embeddings-google-genai
 
 """
 
-import os
-from dotenv import load_dotenv
-from llama_index.core import Settings
-from llama_index.core.query_engine import RetrieverQueryEngine
-# Google GenAI Imports
-from llama_index.llms.google_genai import GoogleGenAI
-from llama_index.embeddings.google_genai import GoogleGenAIEmbedding
-# Llama Cloud Import
-from llama_index.indices.managed.llama_cloud import LlamaCloudRetriever
+import dotenv
 
 # 1. Load environment variables
 load_dotenv()
