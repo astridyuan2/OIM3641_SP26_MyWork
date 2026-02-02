@@ -1,24 +1,31 @@
 python
-def calculate_loan_payment(interest_rate_annual, term_years, present_value):
-    payments_per_year = 12
+import math
 
-    if interest_rate_annual == 0:
-        total_payments = term_years * payments_per_year
-        if total_payments == 0:
-            return float('nan')
-        return present_value / total_payments
+def calculate_loan_payment(interest: float, term: int, present_value: float) -> float:
+    """
+    Calculates the monthly payment for a loan.
 
-    periodic_interest_rate = interest_rate_annual / payments_per_year
-    total_payments = term_years * payments_per_year
+    Args:
+        interest (float): The annual interest rate (e.g., 0.05 for 5%).
+        term (int): The loan term in years.
+        present_value (float): The principal loan amount.
 
-    pow_factor = (1 + periodic_interest_rate)**total_payments
+    Returns:
+        float: The calculated monthly loan payment.
+    """
+    if interest < 0 or term <= 0 or present_value <= 0:
+        raise ValueError("Interest, term, and present value must be positive.")
 
-    numerator = periodic_interest_rate * pow_factor
-    denominator = pow_factor - 1
+    monthly_interest_rate = interest / 12
+    number_of_payments = term * 12
 
-    if denominator == 0:
-        return float('nan')
-
-    payment = present_value * (numerator / denominator)
+    if monthly_interest_rate == 0:
+        # Simple principal division if interest is 0
+        payment = present_value / number_of_payments
+    else:
+        # Standard loan payment formula
+        numerator = monthly_interest_rate * (1 + monthly_interest_rate)**number_of_payments
+        denominator = (1 + monthly_interest_rate)**number_of_payments - 1
+        payment = present_value * (numerator / denominator)
 
     return payment
