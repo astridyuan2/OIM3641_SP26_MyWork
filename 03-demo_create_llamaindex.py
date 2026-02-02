@@ -13,7 +13,7 @@ import os
 load_dotenv()
 
 parser = LlamaParse(api_key=os.getenv("LLAMA_CLOUD_API_KEY"))
-job_result = parser.parse('data/dartmouth_ai.pdf') #can also be a list of documents
+job_result = parser.parse('my_index.txt') #can also be a list of documents
 documents = job_result.get_text_documents() #returns a list even if only one document
 if documents:
     print(f"Successfully parsed beginning with {documents[0].text[:100]}: ")
@@ -22,3 +22,4 @@ else:
 index = LlamaCloudIndex.from_documents(documents, name= "AI_Proposal")
 
 print(index.id)
+

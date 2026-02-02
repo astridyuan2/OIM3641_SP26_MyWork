@@ -50,7 +50,7 @@ query_engine = RetrieverQueryEngine(
 )
 
 # 5. Run the query
-query = "What is this document about?"
+query = "Who is JFK?"
 response = query_engine.query(query)
 
 # 6. Print the response
