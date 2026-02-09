@@ -23,19 +23,18 @@ It serves as a structured workspace to document my learning progress and to buil
 
 ## Repository Structure
 
-```text
 OIM3641_SP26_MyWork/
-├── Classnote/           # Lecture notes and personal summaries
-├── In Class Activity/   # In-class exercises and short assignments
-├── .env                 # Environment variables (ignored by Git)
-├── .gitignore           # Git ignore rules
-└── README.md            # Repository documentation
+
+### Class note          # Lecture notes and personal summaries
+### In Class Activity/   # In-class exercises and short assignments
+### .env                 # Environment variables (ignored by Git)
+### .gitignore           # Git ignore rules
+### README.md            # Repository documentation
 
 
 ## Install Instructions
 
 ### Clone the repository
-```bash
 git clone https://github.com/astridyuan2/OIM3641_SP26_MyWork
 cd OIM3641_SP26_MyWork
 
