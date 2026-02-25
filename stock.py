@@ -11,8 +11,9 @@ sb.set_theme()
 """
 STUDENT CHANGE LOG & AI DISCLOSURE:
 ----------------------------------
-1. Did you use an LLM (ChatGPT/Claude/etc.)? [Yes/No]
+1. Did you use an LLM (ChatGPT/Claude/etc.)? [Yes]
 2. If yes, what was your primary prompt?
+I used it to help debug and make the plots looks better.
 ----------------------------------
 """
 
