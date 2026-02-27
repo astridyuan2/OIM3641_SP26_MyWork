@@ -78,48 +78,29 @@ def get_query_engine():
             st.success("✅ RAG Indexing complete!")
             return index.as_query_engine()
 
-
         except Exception as e:
-
             # If Gemini embedding quota is exhausted, fall back to local embeddings
-
             if is_quota_exhausted(e):
-
                 st.warning("⚠️ Gemini embedding quota exhausted. Falling back to local embeddings (HuggingFace).")
 
                 try:
-
                     from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-
                     Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
-
                     index = VectorStoreIndex.from_documents(docs)
-
                     st.success("✅ RAG Indexing complete (local embeddings)!")
-
                     return index.as_query_engine()
 
-
                 except Exception as e2:
-
                     st.error(
-
                         "❌ Quota exhausted AND local embedding fallback failed.\n\n"
-
                         f"Details: {e2}\n\n"
-
                         "Fix: install local embedding deps:\n"
-
                         "pip install llama-index-embeddings-huggingface sentence-transformers"
-
                     )
-
                     st.stop()
 
             # Normal (non-quota) failure
-
             st.error(f"❌ Failed to initialize the RAG engine: {e}")
-
             st.stop()
 
 
