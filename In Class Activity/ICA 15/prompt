@@ -1,0 +1,11 @@
+1.	My app is broken
+My Streamlit Python application fails to run when I start it with streamlit run app.py. The error message says [insert error message]. The app is supposed to display a URL input box and extract webpage content. Please help me identify the issue and suggest a fix.
+
+2.	I need to parse a dataset
+I have a dataset in CSV format and I need to parse it using Python. The dataset contains columns for URL, title, and content. Please provide Python code using pandas to load the CSV file, clean missing values, and display the first 10 rows.
+
+3.	Authentication isn’t working
+I implemented a login authentication system in a Python Streamlit app, but users cannot log in successfully even with valid credentials. The login form collects username and password and checks them against stored values. Please help debug the authentication logic and suggest improvements.
+
+4.	I need to migrate to a new database
+I need to migrate my application database from SQLite to PostgreSQL. The application is written in Python and currently uses SQLite queries. Please provide steps and example code to migrate the database schema and update the connection configuration.
