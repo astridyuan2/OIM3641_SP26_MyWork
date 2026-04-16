@@ -1,0 +1,117 @@
+# 📊 Automated ML Pipelines & Model Serving
+
+## 📌 Author
+Astrid Yuan
+
+---
+
+## 🧾 Project Overview
+This project demonstrates the end-to-end workflow of building, comparing, and deploying machine learning models for a classification problem. The goal is to predict whether an individual earns more than $50K annually using the Adult Income dataset.
+
+Two approaches were compared:
+- **Low-code workflow (PyCaret)** for rapid model discovery
+- **Manual workflow (scikit-learn)** for full control and transparency
+
+The best-performing model was then deployed as a web service using FastAPI.
+
+---
+
+## 📁 Project Structure
+Assignment 2/
+│── adult.data
+│── discovery.py
+│── main.py
+│── best_pipeline.pkl
+│── feature_columns.json
+│── Confusion Matrix.png
+│── README.md
+
+
+---
+
+## ⚙️ Part 1 & 2: Model Discovery and Comparison
+
+### 📊 Dataset
+- Source: UCI Adult Income Dataset
+- Rows: 32,561
+- Target Variable: `income` (<=50K or >50K)
+
+---
+
+### 🤖 PyCaret Workflow
+Using PyCaret, models were automatically trained and compared using cross-validation.
+
+**Top 3 Models:**
+1. Light Gradient Boosting Machine (LGBMClassifier)
+2. Gradient Boosting Classifier
+3. AdaBoost Classifier
+
+LightGBM achieved the highest accuracy (~87%).
+
+---
+
+### 🧠 Scikit-learn Workflow
+The best model family (LightGBM) was manually rebuilt using:
+- train-test split (80/20)
+- preprocessing pipeline:
+  - numerical: imputation + scaling
+  - categorical: imputation + one-hot encoding
+
+**Classification Report Summary:**
+- Accuracy: ~87%
+- Strong performance on <=50K class
+- Slightly lower recall for >50K class
+
+---
+
+## 📊 Confusion Matrix
+
+The confusion matrix below shows model performance:
+
+- True Negatives (<=50K correctly predicted): 4639
+- False Positives: 306
+- False Negatives: 514
+- True Positives (>50K correctly predicted): 1054
+
+This indicates strong overall performance, with some difficulty identifying high-income individuals.
+
+> 📌 See: `Confusion Matrix.png`
+
+---
+
+## 🚀 Part 3: Model Deployment (FastAPI)
+
+A FastAPI application was built to serve predictions.
+
+### ▶️ Run the API
+
+```bash
+uvicorn main:app --reload
+
+Then open: http://127.0.0.1:8000/docs
+
+Sample input you can use to predict:
+{
+  "age": 39,
+  "workclass": "State-gov",
+  "fnlwgt": 77516,
+  "education": "Bachelors",
+  "education_num": 13,
+  "marital_status": "Never-married",
+  "occupation": "Adm-clerical",
+  "relationship": "Not-in-family",
+  "race": "White",
+  "sex": "Male",
+  "capital_gain": 2174,
+  "capital_loss": 0,
+  "hours_per_week": 40,
+  "native_country": "United-States"
+}
+
+And the sample output should look like:
+{
+  "prediction": "<=50K"
+}
+
+🧠 Conclusion
+This project demonstrates how low-code tools and traditional machine learning workflows complement each other. PyCaret is ideal for rapid experimentation, while scikit-learn offers more control for production environments. Deploying the model with FastAPI enables real-time predictions, completing the full ML pipeline.
